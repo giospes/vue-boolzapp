@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body id="app">
+    <div class="wrapper vh-100 d-flex align-items-center justify-content-center overflow-hidden">
+        <main class="row">
+            <section id="contacts" class="col-12  col-sm-5 col-md-4 h-100 p-0 bg-white overflow-hidden">
+                <header class="p-2 d-flex justify-content-between align-items-center">
+                    <figure class="d-flex align-items-center gap-3 m-0">
+                        <img class="img-fluid gs-prof-img" src="./img/my-picture.jpg" alt="your photo">
+                        <figcaption >Giovanni</figcaption>
+                    </figure>
+                    <div class=" icon-container d-flex align-items-center gap-3">
+                        <i class="fa-solid fa-spinner"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical pe-3"></i>
+                    </div>
+                </header> 
+                <div id="notification" class="bg-info d-flex align-items-center gap-2 py-2 px-3">
+                    <div id="bell-container" class="bg-white d-flex align-items-center justify-content-center" >
+                        <i class="fa-solid fa-bell-slash fs- text-info" ></i>
+                    </div>
+                    <div id="notification-text">
+                        <p class="m-0 medium-text">Lorem ipsum dolor sit amet.<br><a href="#" class="small-text">Lorem ipsum dolor sit amet.</a></p> 
+                    </div>
+                </div>
+                <form  id="search" class="my-2 mx-3 border border-black p-1 ">
+                    <button type="submit" class="border-0 p-0"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <input type="text" id="search-bar">  
+                </form>
+                <section id="contacts-list"  class="overflow-y-auto pb-3">
+                    
+                    <div @click="openChat(contact)" v-for="(contact, index) in contacts" class="d-flex align-items-center gap-2 px-3 py-2" :key="index">
+                        <img :src="contact.avatar" :alt="contact.name" class="gs-prof-img">
+                        <div id="avatar-text">
+                            <p class="m-0 medium-text"><strong>{{contact.name}}</strong></p> 
+                            <span class="small-text">Ultimo mess<span></span>
+                        </div>
+                    </div> 
+                </section>
+                
+
+            </section>
+            <section id="chat" class="d-none d-sm-block  col-sm-7 col-md-8 h-100 overflow-auto p-0">
+                <header class="p-2 d-flex justify-content-between align-items-center">
+                    <div class="d-flex justify-content-center align-items-center" >  
+                        <img src="./img/elon.jpg" alt="contact.name" class="gs-prof-img">
+                        <div class="ps-2">
+                            <p class="m-0 medium-text pt-2"><strong>Elon</strong></p> 
+                            <span class="small-text">Ultimo mess<span></span>
+                        </div>
+                    </div>
+                    <div  class="icon-container d-flex align-items-center gap-3">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical pe-3"></i>
+                    </div>
+                </header>
+                <section id="messages" class="p-5 position-relative overflow-y-scroll">
+                    <p class="message-block medium-text">Lorem </p>
+                    <p class="message-block medium-text sent">Lorem </p>
+                    
+                    
+
+                </section> 
+                <div id="bottom-bar" class="bg-info d-flex align-items-center gap-2 py-2 px-3 justify-content-between">
+                    <i class="fa-regular fa-face-smile ps-3 fs-4"></i>
+                    <input type="text" id="type-bar" class="w-75 px-3"> 
+                    <i class="fa-solid fa-microphone pe-3 fs-4"></i>
+                </div>
+
+            </section>
+
+        </main>
+    </div>
+
+
+    <script type="module" src="./js/script.js"></script>
+</body>
+</html>

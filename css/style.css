@@ -1,4 +1,3 @@
-
 .wrapper{
     background-image: url(../img/mine.jpg);
 }
@@ -103,4 +102,12 @@ header{
 
 #bottom-bar{
     background-color: #eaeaea;
+}
+
+#bottom-bar input{
+    width: 80%;
+}
+
+#bottom-bar .bar-icon{
+    width: 76px;
 }

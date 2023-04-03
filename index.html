@@ -13,7 +13,7 @@
 <body id="app">
     <div class="wrapper vh-100 d-flex align-items-center justify-content-center overflow-hidden">
         <main class="row">
-            <section id="contacts" class="col-12  col-sm-5 col-md-4 h-100 p-0 bg-white overflow-hidden " :class="{'d-none': showMessSec}">
+            <section id="contacts" class="col-12 col-sm-5 col-md-4 h-100 p-0 bg-white overflow-hidden " :class="{'d-none': showMessSec &&  windowWidth<575 }">
                 <header class="p-2 d-flex justify-content-between align-items-center">
                     <figure class="d-flex align-items-center gap-3 m-0">
                         <img class="img-fluid gs-prof-img" src="./img/my-picture.jpg" alt="your photo">
@@ -50,7 +50,7 @@
                 
 
             </section>
-            <section id="chat" class="d-sm-block  col-sm-7 col-md-8 h-100 overflow-auto p-0" :class="{'d-none': !showMessSec}">
+            <section id="chat" class="d-sm-block  col-sm-7 col-md-8 h-100 overflow-auto p-0" :class="{'d-none': !showMessSec }">
                 <header class="p-2 d-flex justify-content-between align-items-center">
                     <div class="d-flex justify-content-center align-items-center" >  
                         <button @click="toggleMessSection" class="me-2 btn"><i class="fa-solid fa-arrow-left"></i></button>
@@ -69,7 +69,7 @@
                 <section id="messages" class="p-5 position-relative overflow-y-scroll" >
                     <p v-for="item in contactShowed.messages" class="message-block medium-text" :class="item.status" >{{item.message}}</p>
                 </section> 
-                <div id="bottom-bar" class="bg-info d-flex align-items-center gap-2 py-2 justify-content-between">
+                <div id="bottom-bar" class="d-flex align-items-center gap-2 py-2 justify-content-between">
                     <i class="fa-regular fa-face-smile ps-5 fs-5"></i>
                     <input type="text" id="type-bar" class="w-75 px-3 medium-text py-1"> 
                     <i class="fa-solid fa-microphone pe-5 fs-5"></i>

@@ -71,10 +71,11 @@ header{
 
 .message-block{
     position: relative;
-    padding: .6rem;
+    padding: 1rem .8rem;
     width: 180px;
     background-color: white;
     border-radius: 10px;
+    line-height: 1rem;
 }
 
 .message-block::after{

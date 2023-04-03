@@ -1,7 +1,11 @@
 
+
 const app = Vue.createApp({
     data(){
         return{
+            contactShowed : null,
+            windowWidth: 0,
+            showMessSec: false,
             contacts: [
                 {
                     name: 'Elon',
@@ -171,10 +175,37 @@ const app = Vue.createApp({
         }
     },
     methods: {
-        openChat(contact){
-            contact
+        getWindowWidth() {
+            this.windowWidth = window.innerWidth;
+        },
+        setContactShowed() {
+            this.contactShowed = this.contacts[0]; 
+        },
+        selectedContact(contact){
+            this.contactShowed = contact;
+            console.log(this.contactShowed)
+        },
+        toggleMessSection(){
+            if(this.windowWidth < 575 ){
+                this.showMessSec = !this.showMessSec
+                console.log(this.showMessSec)
+            }
         }
+        
+    },
+    created() {
+        this.setContactShowed(); 
+    },
+    mounted() {
+        this.getWindowWidth();
+        window.addEventListener('resize', this.getWindowWidth);
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.getWindowWidth);
     }
+      
+        
+     
 })
 
 

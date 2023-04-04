@@ -6,6 +6,20 @@ const app = Vue.createApp({
             contactShowed : null,
             windowWidth: 0,
             showMessSec: false,
+            newMessage: {
+                date: '',
+                message: '',
+                status: 'sent'
+            },
+            answerMessList: [
+                'No, grazie',
+                'Mi dissocio',
+                'Perchè',
+                'Cosa Dobbiamo fare?',
+                'Ma vai a cagare',
+                'Chi si fa i cazzi suoi campa 100 anni',
+                'Hai la 104'   
+            ],
             contacts: [
                 {
                     name: 'Elon',
@@ -190,8 +204,21 @@ const app = Vue.createApp({
                 this.showMessSec = !this.showMessSec
                 console.log(this.showMessSec)
             }
+        },
+        sendMessage(){
+            const messageToPush = {...this.newMessage}
+            this.contactShowed.messages.push(messageToPush)
+            this.newMessage.message=""
+            setTimeout(this.answerMessage, 2000)
+        },
+        answerMessage(){
+            const i = Math.floor(Math.random()*this.answerMessList.length)
+            const messageToPush = {...this.newMessage}
+            messageToPush.message = this.answerMessList[i]
+            messageToPush.status='received'
+            this.contactShowed.messages.push(messageToPush)
         }
-        
+  
     },
     created() {
         this.setContactShowed(); 

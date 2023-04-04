@@ -111,3 +111,10 @@ header{
 #bottom-bar .bar-icon{
     width: 76px;
 }
+
+ 
+@media screen and (max-width: 570px) {
+    main{
+        height: 100vh;
+    }
+}

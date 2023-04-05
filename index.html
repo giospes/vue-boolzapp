@@ -33,17 +33,19 @@
                         <p class="m-0 medium-text">Lorem ipsum dolor sit amet.<br><a href="#" class="small-text">Lorem ipsum dolor sit amet.</a></p> 
                     </div>
                 </div>
-                <form  id="search" class="my-2 mx-3 border border-black p-1 ">
+                <form @submit.prevent  id="search" class="my-2 mx-3 border border-black p-1 ">
                     <button type="submit" class="border-0 p-0"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input type="text" id="search-bar">  
+                    <input type="text" id="search-bar" v-model="searchText" @keyup="search" >  
                 </form>
                 <section id="contacts-list"  class="overflow-y-auto pb-3">
                     
-                    <div @click="selectedContact(contact); toggleMessSection()" v-for="(contact, index) in contacts" class="d-flex align-items-center gap-2 px-3 py-2" :key="index">
-                        <img :src="contact.avatar" :alt="contact.name" class="gs-prof-img">
-                        <div id="avatar-text">
-                            <p class="m-0 medium-text"><strong>{{contact.name}}</strong></p> 
-                            <span class="small-text">Ultimo mess<span></span>
+                    <div @click="selectedContact(contact); toggleMessSection()" v-for="(contact, index) in contacts"  :key="index" >
+                        <div class="d-flex align-items-center gap-2 px-3 py-2" v-if="contact.visible">
+                            <img :src="contact.avatar" :alt="contact.name" class="gs-prof-img">
+                            <div id="avatar-text">
+                                <p class="m-0 medium-text"><strong>{{contact.name}}</strong></p> 
+                                <span class="small-text">Ultimo mess<span></span>
+                            </div>
                         </div>
                     </div> 
                 </section>

@@ -3,6 +3,7 @@
 const app = Vue.createApp({
     data(){
         return{
+            searchText: "",
             contactShowed : null,
             windowWidth: 0,
             showMessSec: false,
@@ -12,12 +13,12 @@ const app = Vue.createApp({
                 status: 'sent'
             },
             answerMessList: [
-                'No, grazie',
-                'Mi dissocio',
+                'Ho bisogno di un Ronin',
+                'Piacere Marco ',
                 'Perchè',
-                'Cosa Dobbiamo fare?',
+                'Ok',
                 'Ma vai a cagare',
-                'Chi si fa i cazzi suoi campa 100 anni',
+                'Hai vinto il concorso DSA',
                 'Hai la 104'   
             ],
             contacts: [
@@ -217,6 +218,19 @@ const app = Vue.createApp({
             messageToPush.message = this.answerMessList[i]
             messageToPush.status='received'
             this.contactShowed.messages.push(messageToPush)
+        },
+        search(){
+            this.contacts.forEach(contact => {
+                for (let index = 0; index < contact.name.length; index++) {
+                    if(!contact.name.toLowerCase().includes(this.searchText.toLowerCase())) {
+                        contact.visible= false
+                    }else{
+                        contact.visible= true
+                    }
+                    
+                }
+                console.log(contact.visible)
+            });
         }
   
     },
